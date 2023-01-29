@@ -11,7 +11,7 @@ var friends = {
 
 // GET request: Retrieve all friends
 router.get("/",(req,res)=>{
-  res.send(JSON.stringify(friends, null, ));
+  res.send(JSON.stringify(friends, " ", 4));
 });
 
 // GET by specific ID request: Retrieve a single friend with email ID
@@ -30,7 +30,7 @@ router.post("/",(req,res)=>{
       friends[req.body.email] = {
           "firstName":req.body.firstName,
           "lastName":req.body.lastName,
-          "DOB":req.body.lastName
+          "DOB":req.body.DOB
       };
       res.send("The user" + (' ')+ (req.body.firstName) + " Has been added!");
   }
@@ -52,10 +52,10 @@ router.put("/:email", function (req, res) {
             friend["DOB"] = DOB
         }
         if(firstName) {
-            friend["firstName"] = DOB
+            friend["firstName"] = firstName
         }
         if(lastName) {
-            friend["lastName"] = DOB
+            friend["lastName"] = lastName
         }
         friends[email]=friend;
         res.send(`Friend with the email  ${email} updated.`);
